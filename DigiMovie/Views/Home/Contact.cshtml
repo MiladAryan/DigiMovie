@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "تماس با ما";
+}
+@*<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<address>
+    One Microsoft Way<br />
+    Redmond, WA 98052-6399<br />
+    <abbr title="Phone">P:</abbr>
+    425.555.0100
+</address>*@
+
+<div class="container body-content">
+    <div class="row" style="margin-top:50px;">
+        <div class="container1">
+            <form action="#">
+                <label for="fname">نام</label>
+                <input type="text" id="fname" name="firstname" placeholder="نام ">
+                <label for="lname">نام خانوادگی</label>
+                <input type="text" id="lname" name="lastname" placeholder="نام خانوادگی">
+                <label for="country">کشور</label>
+                <select id="country" name="country">
+                    <option value="australia">ایران</option>
+                    <option value="canada">امارات</option>
+                    <option value="usa">انگلیس</option>
+                </select>
+                <label for="subject">موضوع</label>
+                <textarea id="subject" name="subject" style="height:200px"></textarea>
+                <input type="submit" value="ارسال">
+
+            </form>
+        </div>
+        <div id="map-container"></div>
+    </div>
+    </div>
+    <script type="text/javascript" src="~/Scripts/mapgoogle.js"></script>
+    @*<script  src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>*@
+    @*<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap"></script>*@
+    <script type="text/javascript">
+        function initialize() {
+            var myLatlng = new google.maps.LatLng(35.742855, 51.443911);
+            var mapOptions = {
+                zoom: 16,
+                scrollwheel: false,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            }
+            var map = new google.maps.Map(document.getElementById('map-container'), mapOptions);
+
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                title: 'شرکت دیجی مووی'
+            });
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
